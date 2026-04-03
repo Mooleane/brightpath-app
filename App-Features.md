@@ -1,3 +1,5 @@
+# App Features
+
 ## Core Features
 - Student Login / Signup
 - View available lessons
