@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BrightPath
 
-## Getting Started
+## Project Overview 
+BrightPath is an app designed to connect students to the tutors of their choice on the subjects they want covered, solving the problem of students not connecting to their material because of different teaching styles from different tutors.
 
-First, run the development server:
-
+## Quick Start 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker build -t brightpath-app . 
+docker run -p 3000:3000 brightpath-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture 
+BrightPath is a two-stage Docker build.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+It uses node:20-alpine to install the dependencies used to create the app in the Build Stage.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Then it uses node:20-alpine to copy the completed build files, to then run the production server.
 
-## Learn More
+This keeps the final image efficient by only using the finished files used within the app.
 
-To learn more about Next.js, take a look at the following resources:
+## Business Value 
+Docker makes sure that BrightPath runs the same on any type of operating system, whether that be Windows, MacOS, Linux, etc. This fixes the "works on my machine" problem by making the app reliable for both students and tutors regardless of the device they use.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+- Next.js
+- React
+- Node.js
+- Docker
+- Tailwind CSS
+- ESLint
